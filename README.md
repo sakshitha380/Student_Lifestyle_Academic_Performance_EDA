@@ -453,7 +453,7 @@ The project includes:
 
 ## 👩‍💻 Author
 
-**Lasya Sai Manasa**
+**Sakshitha Ayyala**
 
 B.E. Artificial Intelligence and Data Science
 
