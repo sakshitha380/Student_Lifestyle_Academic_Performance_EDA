@@ -308,3 +308,12 @@ All important visualizations are available in:
 
 ```text
 outputs/figures/
+## Conclusion
+
+This exploratory data analysis provides insights into the relationship between student lifestyle habits, stress levels, and academic performance.
+
+The analysis shows that study hours have the strongest positive association with GPA among the lifestyle variables considered. Stress levels are also associated with differences in study time, sleep, social activity, physical activity, and GPA.
+
+Students in different stress-level groups show noticeably different lifestyle patterns. Higher stress levels are associated with higher reported study hours and lower reported sleep and physical activity. However, these findings represent associations within the dataset and should not be interpreted as evidence of direct causation.
+
+Overall, the analysis demonstrates how exploratory data analysis and statistical methods can be used to identify meaningful patterns in student lifestyle and academic performance data.
