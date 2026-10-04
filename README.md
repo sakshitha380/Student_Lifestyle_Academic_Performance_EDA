@@ -1,314 +1,394 @@
 # Student Lifestyle & Academic Performance - Exploratory Data Analysis
 
-## Project Overview
+## 📌 Project Overview
 
-This project performs an Exploratory Data Analysis (EDA) of student lifestyle patterns and their relationship with academic performance and stress levels.
+This project performs an Exploratory Data Analysis (EDA) on student lifestyle and academic performance data.
 
-The analysis investigates how factors such as study time, sleep, social activities, extracurricular activities, and physical activity are associated with students' GPA and stress levels.
+The objective is to understand how different lifestyle factors such as study hours, sleep, social activities, extracurricular activities, physical activity, and stress levels are associated with students' academic performance measured through GPA.
 
-The project focuses on understanding patterns and relationships within the dataset using statistical analysis and data visualization.
-
-> **Note:** This is an observational analysis. The relationships identified in the dataset should not be interpreted as causal relationships.
+The analysis uses Python-based data analysis and visualization techniques to identify meaningful patterns, relationships, distributions, and statistical differences within the dataset.
 
 ---
 
-## Objectives
+## 🎯 Objectives
 
 The main objectives of this project are:
 
-- Understand the structure and quality of the student lifestyle dataset.
-- Perform data cleaning and validation.
-- Identify numerical, categorical, and identifier variables.
-- Analyze the distribution of student lifestyle variables.
-- Analyze the distribution of stress levels.
-- Study relationships between lifestyle variables and GPA.
-- Examine relationships between lifestyle variables and stress levels.
-- Compare GPA distributions across different stress levels.
-- Identify correlations among numerical variables.
+- Analyze student lifestyle patterns.
+- Understand the relationship between lifestyle factors and GPA.
+- Examine how lifestyle variables differ across stress levels.
+- Analyze GPA across different stress-level categories.
+- Identify correlations between numerical variables.
 - Detect potential statistical outliers.
-- Summarize the major findings and insights from the dataset.
+- Apply statistical tests to support the findings.
+- Present the results through clear and meaningful visualizations.
 
 ---
 
-## Dataset
+## 📂 Project Structure
 
-The dataset contains information about student lifestyle patterns, stress levels, and academic performance.
-
-### Dataset Size
-
-- Number of observations: **2,000**
-- Number of columns: **8**
-
-### Variables
-
-| Variable | Type | Description |
-|---|---|---|
-| Student_ID | Identifier | Unique identifier for each student |
-| Study_Hours_Per_Day | Numerical | Average study hours per day |
-| Extracurricular_Hours_Per_Day | Numerical | Average extracurricular activity hours per day |
-| Sleep_Hours_Per_Day | Numerical | Average sleep hours per day |
-| Social_Hours_Per_Day | Numerical | Average social activity hours per day |
-| Physical_Activity_Hours_Per_Day | Numerical | Average physical activity hours per day |
-| GPA | Numerical | Student Grade Point Average |
-| Stress_Level | Categorical | Student stress category: Low, Moderate, or High |
+```text
+Student_Lifestyle_Academic_Performance_EDA/
+│
+├── data/
+│   ├── student_lifestyle_dataset.csv
+│   └── student_lifestyle_cleaned.csv
+│
+├── notebooks/
+│   └── student_lifestyle_eda.ipynb
+│
+├── outputs/
+│   └── figures/
+│       ├── correlation_heatmap.png
+│       ├── gpa_across_stress_levels.png
+│       ├── lifestyle_variables_vs_gpa.png
+│       ├── lifestyle_variables_vs_stress.png
+│       ├── outlier_detection.png
+│       └── stress_level_distribution.png
+│
+├── README.md
+├── requirements.txt
+└── .gitignore
+```
 
 ---
 
-## Data Cleaning and Validation
+## 📊 Dataset
 
-The dataset was examined for:
+The dataset contains information about students' lifestyle habits, stress levels, and academic performance.
+
+### Important Variables
+
+| Variable | Description |
+|---|---|
+| `Student_ID` | Unique identifier for each student |
+| `Study_Hours_Per_Day` | Average number of hours spent studying per day |
+| `Extracurricular_Hours_Per_Day` | Average time spent on extracurricular activities |
+| `Sleep_Hours_Per_Day` | Average number of hours of sleep per day |
+| `Social_Hours_Per_Day` | Average time spent on social activities per day |
+| `Physical_Activity_Hours_Per_Day` | Average time spent on physical activity per day |
+| `Stress_Level` | Student stress category: Low, Moderate, or High |
+| `GPA` | Grade Point Average representing academic performance |
+
+---
+
+## 🛠️ Technologies Used
+
+- **Python**
+- **Pandas**
+- **NumPy**
+- **Matplotlib**
+- **Seaborn**
+- **SciPy**
+- **Jupyter Notebook**
+- **Git & GitHub**
+
+---
+
+## 🔍 Exploratory Data Analysis Process
+
+The analysis was performed through the following stages:
+
+### 1. Data Loading
+
+The dataset was loaded using Pandas and inspected to understand its structure, columns, and data types.
+
+### 2. Data Cleaning
+
+The dataset was checked for:
 
 - Missing values
 - Duplicate records
 - Invalid values
-- Data types
-- Identifier columns
-- Numerical variables
-- Categorical variables
+- Incorrect data types
+- Potential inconsistencies
 
-The analysis found no missing values, duplicate records, or invalid values requiring correction.
+The cleaned dataset was saved separately as:
 
-`Student_ID` was treated as an identifier and excluded from statistical analysis.
+```text
+data/student_lifestyle_cleaned.csv
+```
 
-A cleaned version of the dataset was also maintained separately.
+### 3. Exploratory Analysis
 
----
+The distributions and relationships between lifestyle variables, stress levels, and GPA were explored using descriptive statistics and visualizations.
 
-## Exploratory Data Analysis
+### 4. Correlation Analysis
 
-### 1. Univariate Analysis
+Pearson correlation was used to examine the relationship between numerical variables.
 
-The distributions of the numerical variables were examined using descriptive statistics, histograms, and box plots.
+### 5. Statistical Testing
 
-The variables analyzed include:
+Statistical tests were applied to determine whether observed differences between stress-level groups were statistically significant.
 
-- Study Hours
-- Extracurricular Hours
-- Sleep Hours
-- Social Hours
-- Physical Activity Hours
-- GPA
+The Kruskal-Wallis test was used where appropriate.
 
-The stress-level distribution was also examined using category counts, percentages, and a bar chart.
+### 6. Outlier Detection
+
+The Interquartile Range (IQR) method was used to identify potential statistical outliers.
 
 ---
 
-### 2. Bivariate Analysis
+## 📈 Key Findings
 
-The project examines three major relationships.
+### Study Hours vs GPA
 
-#### Lifestyle Variables vs GPA
+Study hours showed the strongest positive relationship with GPA among the lifestyle variables analyzed.
 
-Pearson correlation was used to measure the linear relationship between lifestyle variables and GPA.
+The Pearson correlation coefficient was approximately:
 
-The strongest relationship was observed between:
+```text
+r = 0.7345
+```
 
-**Study Hours and GPA**
-
-with:
-
-**Pearson r = 0.7345**
-
-This indicates a strong positive linear association in this dataset.
-
-Other relationships were comparatively weak:
-
-| Lifestyle Variable | Pearson r | Direction |
-|---|---:|---|
-| Study Hours | 0.7345 | Positive |
-| Extracurricular Hours | -0.0322 | Negative |
-| Sleep Hours | -0.0043 | Negative |
-| Social Hours | -0.0857 | Negative |
-| Physical Activity Hours | -0.3412 | Negative |
-
-Study hours showed the strongest association with GPA among the lifestyle variables examined.
+This indicates a strong positive association between study hours and GPA within this dataset.
 
 ---
 
-### 3. Lifestyle Variables vs Stress Level
+### Physical Activity vs GPA
 
-Lifestyle variables were compared across Low, Moderate, and High stress groups.
+Physical activity hours showed a negative relationship with GPA:
 
-The Kruskal-Wallis test was used because stress level consists of categorical groups and the analysis compares numerical variables across those groups.
+```text
+r = -0.3412
+```
 
-The analysis identified statistically significant differences for several lifestyle variables across stress levels.
-
-Important patterns included:
-
-- Higher stress groups reported higher study hours.
-- Higher stress groups showed lower sleep hours.
-- Social activity differed across stress groups.
-- Physical activity also differed across stress groups.
-- Extracurricular activity showed little difference across stress categories.
-
-These findings describe differences between groups and do not establish causation.
+This represents a weak-to-moderate negative association in the dataset.
 
 ---
 
-### 4. GPA vs Stress Level
+### Social Hours vs GPA
 
-GPA was compared across Low, Moderate, and High stress groups.
+Social hours showed a very weak negative association with GPA:
 
-The group-level GPA results were:
+```text
+r = -0.0857
+```
 
-| Stress Level | Count | Mean GPA | Median GPA |
-|---|---:|---:|---:|
-| Low | 297 | 2.8169 | 2.82 |
-| Moderate | 674 | 3.0248 | 3.02 |
-| High | 1029 | 3.2620 | 3.27 |
-
-A Kruskal-Wallis test was performed to determine whether GPA distributions differed across the stress-level groups.
-
-### Result
-
-- H-statistic: **620.6702**
-- p-value: **< 0.001**
-
-The result indicates a statistically significant difference in GPA distributions across the three stress-level groups.
-
-However, this statistical association should not be interpreted as evidence that stress directly causes changes in GPA.
+Although the relationship was statistically significant, its practical strength was very small.
 
 ---
 
-## Multivariate Analysis
+### Sleep Hours vs GPA
 
-A Pearson correlation matrix was generated to examine relationships among the numerical variables simultaneously.
+Sleep hours showed almost no linear relationship with GPA:
 
-Important correlations include:
+```text
+r = -0.0043
+```
 
-| Variable Pair | Pearson r |
+The relationship was not statistically significant.
+
+---
+
+### Extracurricular Hours vs GPA
+
+Extracurricular hours showed a very weak relationship with GPA:
+
+```text
+r = -0.0322
+```
+
+The relationship was not statistically significant.
+
+---
+
+## 🧠 Lifestyle Variables Across Stress Levels
+
+The analysis showed noticeable differences in several lifestyle variables across Low, Moderate, and High stress groups.
+
+### Study Hours
+
+Average study hours increased across stress categories:
+
+| Stress Level | Average Study Hours |
 |---|---:|
-| Study Hours vs GPA | 0.7345 |
-| Physical Activity vs GPA | -0.3412 |
-| Study Hours vs Physical Activity | -0.4881 |
-| Sleep Hours vs Physical Activity | -0.4703 |
-| Social Hours vs Physical Activity | -0.4171 |
+| Low | 5.47 |
+| Moderate | 6.97 |
+| High | 8.39 |
 
-The correlation matrix provides an overall view of how the numerical variables are related to one another.
+The difference was statistically significant.
 
----
+### Sleep Hours
 
-## Outlier Analysis
+Average sleep decreased for the High stress group:
 
-The Interquartile Range (IQR) method was used to identify potential outliers.
+| Stress Level | Average Sleep Hours |
+|---|---:|
+| Low | 8.06 |
+| Moderate | 7.95 |
+| High | 7.05 |
 
-The analysis was performed on the six numerical analysis variables:
+The difference was statistically significant.
 
-- Study Hours
-- Extracurricular Hours
-- Sleep Hours
-- Social Hours
-- Physical Activity
-- GPA
+### Physical Activity
 
-`Student_ID` was excluded from outlier analysis.
+Average physical activity decreased as stress level increased:
 
-Only a very small number of potential outliers were identified:
+| Stress Level | Average Physical Activity Hours |
+|---|---:|
+| Low | 5.58 |
+| Moderate | 4.34 |
+| High | 3.96 |
 
-- Physical Activity Hours: **5**
-- GPA: **4**
+The difference was statistically significant.
 
-No potential outliers were identified in:
+### Social Hours
 
-- Study Hours
-- Extracurricular Hours
-- Sleep Hours
-- Social Hours
+Social activity showed a small decrease across stress levels:
 
-The identified observations were retained because they appeared to represent plausible observations rather than obvious data-entry errors.
+| Stress Level | Average Social Hours |
+|---|---:|
+| Low | 2.89 |
+| Moderate | 2.74 |
+| High | 2.63 |
 
----
+The difference was statistically significant, although the practical effect was small.
 
-## Key Findings
+### Extracurricular Hours
 
-### Finding 1 — Study Hours and GPA
+Extracurricular activity remained relatively similar across stress groups.
 
-Study hours showed the strongest positive relationship with GPA.
-
-The Pearson correlation was:
-
-**r = 0.7345**
-
-Students with higher reported study hours generally showed higher GPA values in this dataset.
+The difference was not statistically significant.
 
 ---
 
-### Finding 2 — Stress and Lifestyle Patterns
+## 📚 GPA Across Stress Levels
 
-Different stress-level groups showed different lifestyle patterns.
+The average GPA increased across the stress categories in this dataset:
 
-Higher stress groups generally reported:
+| Stress Level | Average GPA |
+|---|---:|
+| Low | 2.82 |
+| Moderate | 3.02 |
+| High | 3.26 |
 
-- More study hours
-- Less sleep
-- Different levels of social activity
-- Lower physical activity
+The Kruskal-Wallis test indicated a statistically significant difference in GPA distributions across the stress-level groups.
 
----
+```text
+Kruskal-Wallis H ≈ 620.67
+p < 0.001
+```
 
-### Finding 3 — GPA Differs Across Stress Groups
+This result indicates that GPA distributions differ significantly between at least some stress-level groups.
 
-The GPA distributions differed significantly across the three stress categories.
-
-The mean GPA increased from:
-
-**Low Stress → Moderate Stress → High Stress**
-
-However, this is an observed association in the dataset and does not establish a causal relationship.
+However, this should not be interpreted as evidence that higher stress causes higher GPA.
 
 ---
 
-### Finding 4 — Weak Relationships
+## 🔗 Correlation Analysis
 
-Extracurricular hours and sleep hours showed very weak linear relationships with GPA in the correlation analysis.
+Some notable correlations observed in the dataset include:
 
-This indicates that these variables did not show a strong direct linear association with GPA in this dataset.
+| Variables | Correlation |
+|---|---:|
+| Study Hours ↔ GPA | 0.7345 |
+| Study Hours ↔ Physical Activity | -0.4881 |
+| Physical Activity ↔ GPA | -0.3412 |
+| Sleep Hours ↔ Physical Activity | -0.4703 |
+| Social Hours ↔ Physical Activity | -0.4171 |
 
----
-
-### Finding 5 — Physical Activity
-
-Physical activity showed a moderate negative association with GPA:
-
-**r = -0.3412**
-
-This result should be interpreted carefully because correlation does not imply causation and other variables may influence the observed relationship.
+The strongest positive association was observed between study hours and GPA.
 
 ---
 
-## Visualizations
+## 🚨 Outlier Detection
 
-The project generated several important visualizations.
+Potential outliers were identified using the Interquartile Range (IQR) method.
 
-### Correlation Heatmap
+| Variable | Number of Outliers |
+|---|---:|
+| Study Hours | 0 |
+| Extracurricular Hours | 0 |
+| Sleep Hours | 0 |
+| Social Hours | 0 |
+| Physical Activity Hours | 5 |
+| GPA | 4 |
 
-Shows the Pearson correlations among the numerical variables.
+Only a very small number of observations were identified as potential outliers.
 
-### Lifestyle Variables vs GPA
+These observations were retained because they appeared to be plausible values rather than obvious data-entry errors.
 
-Scatter plots show the relationship between lifestyle variables and GPA.
+---
 
-### Lifestyle Variables vs Stress
-
-Visualizations compare lifestyle patterns across different stress-level categories.
+## 📊 Visualizations
 
 ### GPA Across Stress Levels
 
-A box plot compares GPA distributions for Low, Moderate, and High stress groups.
+This box plot compares GPA distributions across Low, Moderate, and High stress levels.
+
+![GPA Across Stress Levels](outputs/figures/gpa_across_stress_levels.png)
+
+---
+
+### Lifestyle Variables vs GPA
+
+These scatter plots visualize the relationships between lifestyle variables and GPA.
+
+![Lifestyle Variables vs GPA](outputs/figures/lifestyle_variables_vs_gpa.png)
+
+---
+
+### Lifestyle Variables vs Stress
+
+This visualization compares lifestyle patterns across different stress-level categories.
+
+![Lifestyle Variables vs Stress](outputs/figures/lifestyle_variables_vs_stress.png)
+
+---
+
+### Correlation Heatmap
+
+The correlation heatmap shows the strength and direction of relationships among numerical variables.
+
+![Correlation Heatmap](outputs/figures/correlation_heatmap.png)
+
+---
 
 ### Stress Level Distribution
 
-Shows the distribution of students across the three stress categories.
+This visualization shows the distribution of students across Low, Moderate, and High stress categories.
+
+![Stress Level Distribution](outputs/figures/stress_level_distribution.png)
+
+---
 
 ### Outlier Detection
 
-Box plots are used to identify potential statistical outliers.
+Box plots were used to identify potential statistical outliers among numerical variables.
 
-All important visualizations are available in:
+![Outlier Detection](outputs/figures/outlier_detection.png)
 
-```text
-outputs/figures/
-## Conclusion
+---
+
+## 💡 Overall Insights
+
+The analysis highlights several important patterns:
+
+1. Study hours have the strongest positive association with GPA among the lifestyle variables analyzed.
+2. Students belonging to different stress-level groups show distinct lifestyle patterns.
+3. Higher stress levels are associated with higher reported study hours.
+4. Higher stress levels are also associated with lower reported sleep and physical activity.
+5. Physical activity shows a negative association with both study hours and GPA in this dataset.
+6. Extracurricular activity has little observable relationship with GPA or stress level.
+7. Only a very small number of potential statistical outliers were detected.
+8. The dataset contains meaningful relationships between lifestyle allocation, stress levels, and academic performance.
+
+---
+
+## ⚠️ Important Note
+
+This analysis identifies **associations and patterns**, not causal relationships.
+
+For example, although study hours and GPA show a strong positive association, this analysis alone cannot establish that increasing study hours directly causes GPA to increase.
+
+Similarly, the observed relationship between stress levels and GPA should not be interpreted as evidence that stress directly improves academic performance.
+
+Other factors that are not included in the dataset may also influence academic performance.
+
+---
+
+## 🏁 Conclusion
 
 This exploratory data analysis provides insights into the relationship between student lifestyle habits, stress levels, and academic performance.
 
@@ -317,3 +397,82 @@ The analysis shows that study hours have the strongest positive association with
 Students in different stress-level groups show noticeably different lifestyle patterns. Higher stress levels are associated with higher reported study hours and lower reported sleep and physical activity. However, these findings represent associations within the dataset and should not be interpreted as evidence of direct causation.
 
 Overall, the analysis demonstrates how exploratory data analysis and statistical methods can be used to identify meaningful patterns in student lifestyle and academic performance data.
+
+---
+
+## 🚀 How to Run the Project
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/sakshitha380/Student_Lifestyle_Academic_Performance_EDA.git
+```
+
+### 2. Navigate to the project directory
+
+```bash
+cd Student_Lifestyle_Academic_Performance_EDA
+```
+
+### 3. Install the required libraries
+
+```bash
+pip install -r requirements.txt
+```
+
+### 4. Open the Jupyter Notebook
+
+Open:
+
+```text
+notebooks/student_lifestyle_eda.ipynb
+```
+
+Run the notebook cells sequentially to reproduce the analysis and visualizations.
+
+---
+
+## 📁 Output Files
+
+The generated visualizations are stored in:
+
+```text
+outputs/figures/
+```
+
+The project includes:
+
+- `correlation_heatmap.png`
+- `gpa_across_stress_levels.png`
+- `lifestyle_variables_vs_gpa.png`
+- `lifestyle_variables_vs_stress.png`
+- `outlier_detection.png`
+- `stress_level_distribution.png`
+
+---
+
+## 👩‍💻 Author
+
+**Lasya Sai Manasa**
+
+B.E. Artificial Intelligence and Data Science
+
+---
+
+## ⭐ Project Highlights
+
+- Complete Exploratory Data Analysis workflow
+- Data cleaning and validation
+- Descriptive statistical analysis
+- Correlation analysis
+- Statistical hypothesis testing
+- Outlier detection
+- Multiple data visualizations
+- Reproducible Python/Jupyter workflow
+- Organized GitHub project structure
+
+---
+
+## 📌 Disclaimer
+
+This project is intended for educational and analytical purposes. The findings are based on the available dataset and should not be generalized to all students or interpreted as causal conclusions.
